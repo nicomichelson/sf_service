@@ -3,12 +3,23 @@ namespace App\Service\Electrodomesticos;
 
 abstract class Electrodomestico 
 {   
-    private $precio = 1001 ;
-    private $color;
+    private $precio  ;
+    private $color ;
     private $consumo;
     private $peso;
 
-      
+    public function __contruct(
+        int $precio = 1000, 
+        string $color = "blanco",
+        string $consumo = "F",
+        int $peso = 5
+    )
+    {
+        $this->precio = $precio;
+        $this->color = $color;
+        $this->consumo = $consumo;
+        $this->peso = $peso;
+    }
 
 
     /**
@@ -46,7 +57,7 @@ abstract class Electrodomestico
      */ 
     public function setColor($color)
     {
-        $this->color = $color;
+        $this->color = $this->comprobarColor($color);
 
         return $this;
     }
@@ -66,7 +77,7 @@ abstract class Electrodomestico
      */ 
     public function setConsumo($consumo)
     {
-        $this->consumo = $consumo;
+        $this->consumo = $this->comprobarConsumoEnergetico($consumo);
 
         return $this;
     }
@@ -89,5 +100,30 @@ abstract class Electrodomestico
         $this->peso = $peso;
 
         return $this;
+    }
+
+    private function comprobarConsumoEnergetico(string $letra):string
+    {
+        $letras = ["A","B","C","D","E","F"];
+
+        
+        if(in_array(strtoupper($letra), $letras))
+        {
+            return  strtoupper($letra);
+        }  
+
+        return "F";
+    }
+
+    private function comprobarColor(string $color): string
+    {
+        $colores = [ "blanco", "negro", "rojo", "azul", "gris"];
+
+        if(in_array(strtolower($color), $colores))
+        {
+            return strtolower($color);
+        }
+
+        return "blanco";
     }
 }

@@ -6,7 +6,7 @@ class Lavarropas extends Electrodomestico
     
     public function __construct()
     {
-        // $this->electrodomestico = parent::class;
+        parent::__contruct();
     }
 
     public function mostrar()
