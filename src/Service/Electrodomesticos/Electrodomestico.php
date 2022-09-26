@@ -21,7 +21,13 @@ abstract class Electrodomestico
         $this->peso = $peso;
     }
 
-
+    public function __toString()
+    {
+        return  $this->precio ."<br>". 
+        $this->color ."<br>".
+        $this->consumo ."<br>".
+        $this->peso;
+    }
     /**
      * Get the value of precio
      */ 
@@ -125,5 +131,10 @@ abstract class Electrodomestico
         }
 
         return "blanco";
+    }
+
+    private function precioFinal(): int
+    {
+
     }
 }

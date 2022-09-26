@@ -48,9 +48,11 @@ class MainController extends AbstractController
         // dump($this->pass->saludar()); die; 
         $pass = $this->pass;
         $valido = $validarPassword::validar($pass->getPassword());
-        
+        $lava = new Lavarropas(15,15);
+
+
         $lavarropas->setColor("azul");
-        dump($lavarropas->getColor()); die;
+        dump($lava); die;
         
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
